@@ -23,6 +23,13 @@ func Sqclose() {
 	db.Close()
 }
 
+func UpdName(name string, nname string) {
+	_, err := db.Query("CALL changename(?, ?)", name, nname)
+	if err != nil {
+		panic(err)
+	}
+}
+
 func GetSearch(key string, min string, max string) []str.Items {
 	row, err := db.Query("CALL search(?, ?, ?)", key, min, max)
 	if err != nil {

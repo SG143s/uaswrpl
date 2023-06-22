@@ -23,6 +23,12 @@ func Webstart() {
 		res = sq.GetSearch(params[0], params[1], params[2])
 		c.JSON(200, res)
 	})
+	r.POST("/update/:name/*nname", func(c *gin.Context) {
+		p1 := c.Param("name")
+		p2 := c.Param("nname")
+		sq.UpdName(p1, p2)
+		c.JSON(200, "OK")
+	})
 
 	r.Run(":8000")
 }
